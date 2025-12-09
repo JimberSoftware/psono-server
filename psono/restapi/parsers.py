@@ -43,13 +43,13 @@ class DecryptJSONParser(JSONParser):
             if 'test' in sys.argv:
                 # We only allow unencrypted data in unittests
                 return data
-            raise ParseError('Invalid request')
+            raise ParseError('Invalid request 1')
 
         decrypted_data = decrypt(parser_context['request'].auth.secret_key, data['text'], data['nonce'])
 
         try:
             data = json.loads(decrypted_data.decode())
         except ValueError:
-            raise ParseError('Invalid request')
+            raise ParseError('Invalid request 2')
 
         return data

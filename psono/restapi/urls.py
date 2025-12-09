@@ -148,6 +148,11 @@ urlpatterns = [
     re_path(r'^healthcheck/$', views.HealthCheckView.as_view(), name='healthcheck'),
     re_path(r'^info/$', views.InfoView.as_view(), name='info'),
 
+    # OIDC Authentication
+    re_path(r'^oidc/(?P<provider_id>\d+)/initiate-login/$', views.OIDCInitiateLoginView.as_view(), name='oidc_initiate_login'),
+    re_path(r'^oidc/(?P<provider_id>\d+)/callback/$', views.OIDCCallbackView.as_view(), name='oidc_callback'),
+    re_path(r'^oidc/login/$', views.OIDCLoginView.as_view(), name='oidc_login'),
+    re_path(r'^oidc/setup-keys/$', views.OIDCSetupKeysView.as_view(), name='oidc_setup_keys'),
 ]
 
 if settings.DEBUG:

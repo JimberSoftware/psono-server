@@ -73,3 +73,4 @@ from .link_share_access import LinkShareAccessView
 from .security_report import SecurityReportView
 from .management_command import ManagementCommandView
 from .user_ivalt import UserIvalt
+from .oidc import OIDCInitiateLoginView, OIDCCallbackView, OIDCLoginView, OIDCSetupKeysView

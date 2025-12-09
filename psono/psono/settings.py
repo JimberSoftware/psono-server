@@ -685,6 +685,9 @@ if isinstance(AUTHENTICATION_METHODS, str) and AUTHENTICATION_METHODS:
 elif isinstance(AUTHENTICATION_METHODS, str):
     AUTHENTICATION_METHODS = []
 
+# OIDC Configuration
+OIDC_CONFIGURATIONS = config_get('OIDC_CONFIGURATIONS', [])
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
