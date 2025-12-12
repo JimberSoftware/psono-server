@@ -1,3 +1,32 @@
+# Jimber Server (Psono Server)
+
+## Description
+
+Psono password manager server. This is the backend server that handles password storage, encryption, sharing, and user management. The server runs in a Docker container and integrates with the Jimber OIDC Identity Provider for authentication.
+
+## Quick Start
+
+```bash
+cd  psono-server
+docker compose -f docker-compose.dev.yaml up -d
+```
+
+## Port Information
+
+- **Port**: `10100`
+- **URL**: `http://localhost:10100`
+- **Note**: Runs in Docker container with code mounted for development
+
+## Dependencies
+
+The server depends on:
+- PostgreSQL database (port 5432)
+- Jimber OIDC Backend (port 3000)
+
+Both are started automatically via `docker-compose.dev.yaml`.
+
+---
+
 # PSONO Server - Password Manager
 
 [![coverage report](https://gitlab.com/esaqa/psono/psono-server/badges/master/coverage.svg)](https://gitlab.com/esaqa/psono/psono-server/commits/master) [![Code Climate](https://codeclimate.com/github/psono/psono-server/badges/gpa.svg)](https://codeclimate.com/github/psono/psono-server) [![build status](https://img.shields.io/docker/pulls/psono/psono-server.svg)](https://hub.docker.com/r/psono/psono-server/) [![Discord](https://img.shields.io/badge/Discord-join%20chat-738bd7.svg)](https://discord.gg/VmBMzTSbGV)
