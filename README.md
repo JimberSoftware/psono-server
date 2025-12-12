@@ -8,7 +8,7 @@ Psono password manager server. This is the backend server that handles password 
 
 ```bash
 cd  psono-server
-docker compose -f docker-compose.dev.yaml up -d
+docker compose up -d
 ```
 
 ## Port Information
