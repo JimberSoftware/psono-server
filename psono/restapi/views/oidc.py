@@ -357,9 +357,9 @@ class OIDCLoginView(GenericAPIView):
                 authkey='',
                 public_key='',  # Will be set during setup
                 private_key='',  # Will be set during setup
-                private_key_nonce='',
+                private_key_nonce=None,  # Use None instead of '' to avoid UNIQUE constraint violations
                 secret_key='',  # Will be set during setup
-                secret_key_nonce='',
+                secret_key_nonce=None,  # Use None instead of '' to avoid UNIQUE constraint violations
                 user_sauce=user_sauce,
                 hashing_algorithm='scrypt',
                 hashing_parameters=hashing_params,
