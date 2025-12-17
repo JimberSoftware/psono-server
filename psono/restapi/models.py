@@ -113,17 +113,20 @@ class User(models.Model):
                 if hashing_parameters_changed or hashing_algorithm_changed:
                     Old_Credential.objects.filter(user_id=stored_user.id).delete()
 
-                Old_Credential.objects.create(
-                    user_id=stored_user.id,
-                    authkey=stored_user.authkey,
-                    public_key=stored_user.public_key,
-                    secret_key=stored_user.secret_key,
-                    secret_key_nonce=stored_user.secret_key_nonce,
-                    private_key=stored_user.private_key,
-                    private_key_nonce=stored_user.private_key_nonce,
-                    hashing_algorithm=stored_user.hashing_algorithm,
-                    hashing_parameters=stored_user.hashing_parameters,
-                )
+                # Only archive old credentials if they actually exist (not None/empty)
+                # This prevents NOT NULL constraint violations when OIDC/SAML users set up their keys
+                if stored_user.private_key_nonce and stored_user.secret_key_nonce:
+                    Old_Credential.objects.create(
+                        user_id=stored_user.id,
+                        authkey=stored_user.authkey,
+                        public_key=stored_user.public_key,
+                        secret_key=stored_user.secret_key,
+                        secret_key_nonce=stored_user.secret_key_nonce,
+                        private_key=stored_user.private_key,
+                        private_key_nonce=stored_user.private_key_nonce,
+                        hashing_algorithm=stored_user.hashing_algorithm,
+                        hashing_parameters=stored_user.hashing_parameters,
+                    )
 
             if email_changed or email_bcrypt_changed :
                 Old_Email.objects.create(
